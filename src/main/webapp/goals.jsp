@@ -4,6 +4,7 @@
     Author     : haziq
 --%>
 
+<%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="model.FinancialGoal" %>
@@ -74,11 +75,7 @@
     </thead>
     <tbody>
     <%
-        Connection conn = (Connection) getServletContext().getAttribute("DBConnection");
-        FinancialGoalDAO Newgoals = new FinancialGoalDAO(conn);
-        Integer userId = (Integer) request.getSession().getAttribute("userId");
-        List<Goals> currGoal = Newgoals.getGoal(userId);
-        request.setAttribute("goals", currGoal);
+        
         List<FinancialGoal> goals = (List<FinancialGoal>) request.getAttribute("goals");
         if (goals != null && !goals.isEmpty()) {
             java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("MMM dd, yyyy");

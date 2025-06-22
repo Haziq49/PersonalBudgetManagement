@@ -4,6 +4,7 @@
     Author     : haziq
 --%>
 
+<%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="model.Transaction" %>
@@ -114,11 +115,7 @@
         </thead>
         <tbody>
         <%
-            Connection conn = (Connection) getServletContext().getAttribute("DBConnection");
-            TransactionDAO Newtransaction = new TranctionDAO(conn);
-            Integer userId = (Integer) request.getSession().getAttribute("userId");
-            List<Transaction> currTransaction = Newtransaction.getTransaction(userId);
-            request.setAttribute("transaction", currTransaction);
+            
             List<Transaction> transactions = (List<Transaction>) request.getAttribute("transactions");
             if (transactions != null && !transactions.isEmpty()) {
                 for (Transaction t : transactions) {
