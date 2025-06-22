@@ -24,7 +24,7 @@ public class AppContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/personal_budget_db", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://mysql.railway.internal:3306/personal_budget_db", "root", "tFuklRzNgBOmhyzGLHzmPAfqpwqEyYLI");
             sce.getServletContext().setAttribute("DBConnection", conn);
             System.out.println("Database connection initialized.");
         } catch (Exception e) {
